@@ -1,0 +1,23 @@
+{% extends 'meetups/base/base.html'%}
+{% load static %}
+{% block site_css%}
+<link rel="stylesheet" href="{% static 'meetups/styles/registration-confirmation.css'%}">
+<link rel="stylesheet" href="{% static 'meetups/styles/meetup_details.css'%}">
+<link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<h1 id="main-header">LogIn</h1>
+<section id="registration">
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn">Log in</button>
+        <a class="btn" href="{% url 'signup' %}">Create new account</a>
+    </form>
+</section>
+
+{% endblock %}
+
+ 

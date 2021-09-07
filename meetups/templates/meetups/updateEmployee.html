@@ -1,0 +1,28 @@
+{% extends 'meetups/base/base.html' %}
+
+{% load static %}
+
+{% block site_css%}
+<link rel="stylesheet" href="{% static 'meetups/styles/registration-confirmation.css'%}">
+<link rel="stylesheet" href="{% static 'meetups/styles/meetup_details.css'%}">
+<link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<h2 id="main-header">
+    Update Job
+</h2>
+
+<section id="registration">
+    <form accept="" method="POST" >
+        
+        {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <button type="submit" class="btn">Update Employee</button>
+    </form>
+</section>
+
+{% endblock %}

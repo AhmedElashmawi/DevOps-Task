@@ -1,0 +1,39 @@
+{% extends 'meetups/base/base.html' %}
+{% load static %}
+
+{% block title %} All Jobs {% endblock %}
+
+{% block site_css %} 
+<link rel="stylesheet" href="{% static 'meetups/styles/all_meetups.css' %}">
+{% endblock%}
+
+{% block main_heading %}
+we got great Jobs coming up!
+{% endblock %}
+
+
+{% block header_content %}
+<p>
+    Find the one that best suits your needs!
+</p>
+{% endblock %}
+
+
+{% block body %}
+    <section>
+    <h2> Upcoming Jobs</h2>
+    <ol>
+        {% for meetup_items in meetups %}
+            {% include 'meetups/includes/meetup-item.html' with title=meetup_items.title image=meetup_items.image.url location=meetup_items.location slug=meetup_items.slug %}
+        {% endfor %}
+    </ol>
+    </section>
+{% endblock %}
+
+
+<main>
+    
+</main>
+
+</body>
+</html>

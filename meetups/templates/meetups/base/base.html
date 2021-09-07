@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} My Jobs{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+    {% block site_css %}{% endblock %}
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+</head>
+<body>
+    <header id="main-header">
+    {% if user.is_authenticated %}    
+    <nav class="navbar navbar-expand-sm navbar-light ">
+        <div class="container">
+            <a href="/meetups/" id="main-logo">Django Employmennt Portal Project</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="mainMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                            {{user.username}}
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                                <a class="dropdown-item" href="{% url 'addJobs' %}">Add Job</a>
+                                <div class="dropdown-divider"> 
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% else %}
+    <nav><a href="/meetups/" id="main-logo">DjangoJobs</a><br><br><br>
+        <div class="align-item-right">
+            <a href="{% url 'login' %}" class="btn btn-lg m-5  btn-primary">Login</a>
+            <a href="{% url 'addEmployee' %}" class="btn btn-lg m-5 btn-success">SignUp</a>
+            <h3> <a href="{% url 'addEmployee' %}">Signup</a> to Explore all our <strong>jobs</strong> & you can add jobs </h3>
+        </div>
+    </nav>
+    {% endif %}
+    <h1>{% block main_heading %}we got great Jobs coming up! {% endblock %}</h1>
+    {% block headrer_content %} {% endblock %}
+</header>
+
+
+
+<main>
+    {% block body %} {% endblock %}
+</main>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+<!-- <script src="{% static 'meetups/scripts/jquery-3.6.0.min.js'%}"></script>
+<script src="{% static 'meetups/scripts/bootstrap.min.js'%}"></script> -->
+</body>
+</html>
