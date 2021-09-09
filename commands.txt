@@ -5,7 +5,15 @@ build image using docker compose :
 
 docker-compose build 
 
-docker-compose run --rm app django-admin startproject "name" . 
-doocker-compose up 
+docker-compose run --rm app django-admin startproject "djngo_site" . 
+docker-compose up 
 
 docker exe -it django_container /bin/bash
+
+kubectl apply -f deployment.yaml
+minikube start
+kubectl get po -A
+minikube dashboard
+
+docker tag djangoapp/firstimage:latest ahmedelashmawi/dockerhub:myfirstimage
+docker push ahmedelashmawi/dockerhub:myfirstimage
